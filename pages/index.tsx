@@ -1,7 +1,7 @@
-import React from "react"
-import { GlobalStyles } from "../src/theme/GlobalStyles"
+import React from "react";
+import { GlobalStyles } from "@ui/theme/GlobalStyles";
 
-const bg = "https://mariosouto.com/cursos/crudcomqualidade/bg"
+const bg = "https://mariosouto.com/cursos/crudcomqualidade/bg";
 
 function HomePage() {
   return (
@@ -90,7 +90,7 @@ function HomePage() {
         </table>
       </section>
     </main>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;

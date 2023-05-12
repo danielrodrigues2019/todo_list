@@ -1,7 +1,7 @@
-import React from "react"
+import React from "react";
 
-const basePadding = "5%"
-const breakpoint = "850px"
+const basePadding = "5%";
+const breakpoint = "850px";
 
 const pallete = {
   indigo: {
@@ -52,15 +52,15 @@ const pallete = {
     x800: "#323F4B",
     x900: "#1F2933",
   },
-}
-type ThemeName = keyof typeof pallete
+};
+type ThemeName = keyof typeof pallete;
 
 export function GlobalStyles({ themeName }: { themeName?: ThemeName }) {
   const theme = {
     primary: pallete[themeName || "indigo"],
     negative: pallete.red,
     neutral: pallete.coolGrey,
-  }
+  };
 
   return (
     <style jsx global>
@@ -391,5 +391,5 @@ export function GlobalStyles({ themeName }: { themeName?: ThemeName }) {
         }
       `}
     </style>
-  )
+  );
 }
