@@ -3,7 +3,7 @@ import fs from "fs"; //ES6
 const DB_FILE_PATH = "./core/db";
 import { v4 as uuid } from "uuid";
 
-console.log("[CRUD]");
+// console.log("[CRUD]");
 
 type UUID = string;
 
@@ -28,7 +28,7 @@ function create(content: string): Todo {
   return todo;
 }
 
-function read(): Array<Todo> {
+export function read(): Array<Todo> {
   const dbString = fs.readFileSync(DB_FILE_PATH, "utf-8");
   const db = JSON.parse(dbString || "{}");
   if (!db.todos) {
@@ -84,7 +84,7 @@ function CLEAR_DB() {
   fs.writeFileSync(DB_FILE_PATH, "");
 }
 
-CLEAR_DB();
+/* CLEAR_DB();
 create("Primeira TODO");
 const secondTodo = create("Segunda TODO");
 deleteById(secondTodo.id);
@@ -95,3 +95,4 @@ update(thirdTodo.id, {
 });
 updateContentById(thirdTodo.id, "Atualizada!");
 console.log(read());
+ */
