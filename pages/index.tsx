@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { GlobalStyles } from "@ui/theme/GlobalStyles";
+import { todoController } from "@ui/controller/todo";
 
 const bg = "https://mariosouto.com/cursos/crudcomqualidade/bg";
 
+interface HomeTodo {
+  id: string;
+  content: string;
+}
+
 function HomePage() {
+  const [todos, setTodos] = React.useState<HomeTodo[]>([]);
+  const [page, setPage] = React.useState(1);
+
+  // Load infos onload
+  useEffect(() => {
+    todoController.get({ page }).then(({ todos }) => {
+      setTodos(todos);
+    });
+  }, []);
+
   return (
     <main>
       <GlobalStyles />
@@ -41,22 +57,20 @@ function HomePage() {
           </thead>
 
           <tbody>
-            <tr>
-              <td>
-                <input type="checkbox" />
-              </td>
-              <td>d4f26</td>
-              <td>
-                Conteúdo de uma TODO Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Eaque vero facilis obcaecati, autem aliquid
-                eius! Consequatur eaque doloribus laudantium soluta optio odit,
-                provident, ab voluptates doloremque voluptas recusandae
-                aspernatur aperiam.
-              </td>
-              <td align="right">
-                <button data-type="delete">Apagar</button>
-              </td>
-            </tr>
+            {todos.map((todo) => {
+              return (
+                <tr key={todo.id}>
+                  <td>
+                    <input type="checkbox" />
+                  </td>
+                  <td>{todo.id.substring(0, 4)}</td>
+                  <td>{todo.content}</td>
+                  <td align="right">
+                    <button data-type="delete">Apagar</button>
+                  </td>
+                </tr>
+              );
+            })}
 
             <tr>
               <td colSpan={4} align="center" style={{ textAlign: "center" }}>
@@ -72,8 +86,8 @@ function HomePage() {
 
             <tr>
               <td colSpan={4} align="center" style={{ textAlign: "center" }}>
-                <button data-type="load-more">
-                  Carregar mais{" "}
+                <button data-type="load-more" onClick={() => setPage(page + 1)}>
+                  Página {page}, Carregar mais{" "}
                   <span
                     style={{
                       display: "inline-block",
