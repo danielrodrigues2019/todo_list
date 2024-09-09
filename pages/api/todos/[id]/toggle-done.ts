@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { NextApiRequest, NextApiResponse } from 'next'
 import { todoController } from '@server/controller/todo'
 
@@ -5,15 +6,8 @@ export default function handler(
   request: NextApiRequest,
   response: NextApiResponse,
 ) {
-  // eslint-disable-next-line no-console
-
-  if (request.method === 'GET') {
-    todoController.get(request, response)
-    return
-  }
-
-  if (request.method === 'POST') {
-    todoController.create(request, response)
+  if (request.method === 'PUT') {
+    todoController.toggleDone(request, response)
     return
   }
 
