@@ -38,5 +38,11 @@ module.exports = {
     'no-console': ['error', { allow: ['warn', 'error'] }],
     'react/no-unknown-property': ['error', { ignore: ['jsx', 'global'] }],
     'chai-friendly/no-unused-expressions': 2,
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
   },
 }
