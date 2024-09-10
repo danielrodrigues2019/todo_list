@@ -56,7 +56,7 @@ function HomePage() {
               content: newTodoContent,
               onSuccess(todo: HomeTodo) {
                 setTodos((oldTodos) => {
-                  return [...oldTodos, todo]
+                  return [todo, ...oldTodos]
                 })
                 setNewTodoContent('')
               },
